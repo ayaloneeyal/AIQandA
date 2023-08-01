@@ -25,7 +25,7 @@ st.set_page_config(page_title="Maple AI assistent", page_icon=im)
 st.title(":maple_leaf: Maple AI assistent")
 
 
-
+@st.cache_resource(ttl="1h")
 def configure_retriever():
 
     text = ""
@@ -125,7 +125,10 @@ if "messages" not in st.session_state:
     ]
 
 for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+    if msg["role"] == "assistant" :
+        st.chat_message(msg["role"],avatar=im).write(msg["content"])
+    else:
+        st.chat_message(msg["role"]).write(msg["content"])
 
 user_query = st.chat_input(placeholder="Ask me anything!")
 

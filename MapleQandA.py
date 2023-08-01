@@ -127,7 +127,7 @@ for msg in st.session_state.messages:
     im = Image.open("./favicon.ico") 
 
     if msg["role"] == "assistant" :
-        st.chat_message(msg["role"],avatar=im).write(msg["content"])
+        st.chat_message(msg["role"],avatar=https://github.com/ayaloneeyal/AIQandA/blob/main/favicon.ico).write(msg["content"])
     else:
         st.chat_message(msg["role"]).write(msg["content"])
 

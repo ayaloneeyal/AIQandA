@@ -124,6 +124,8 @@ if "messages" not in st.session_state:
     ]
 
 for msg in st.session_state.messages:
+    im = Image.open("./favicon.ico") 
+
     if msg["role"] == "assistant" :
         st.chat_message(msg["role"],avatar=im).write(msg["content"])
     else:

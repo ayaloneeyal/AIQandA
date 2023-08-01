@@ -59,6 +59,10 @@ class StreamHandler(BaseCallbackHandler):
         self.text += token
         self.container.markdown(self.text)
 
+openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+if not openai_api_key:
+    st.info("Please add your OpenAI API key to continue.")
+    st.stop()
 
 class PrintRetrievalHandler(BaseCallbackHandler):
     def __init__(self, container):
@@ -96,6 +100,7 @@ memory = ConversationBufferMemory(
 )
 llm = ChatOpenAI(
     model_name="gpt-3.5-turbo",
+    openai_api_key=openai_api_key,
     temperature=0,
     streaming=True,
 )
@@ -105,6 +110,7 @@ agent = initialize_agent(
     agent="chat-conversational-react-description",
     tools=tools,
     llm=llm,
+    openai_api_key=openai_api_key,
     verbose=True,
     max_iterations=3,
     handle_parsing_errors="Check your output and make sure it conforms!",

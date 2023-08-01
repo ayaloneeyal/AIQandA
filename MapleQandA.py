@@ -125,10 +125,7 @@ if "messages" not in st.session_state:
     ]
 
 for msg in st.session_state.messages:
-    if msg["role"] == "assistant" :
-        st.chat_message(msg["role"],avatar=im).write(msg["content"])
-    else:
-        st.chat_message(msg["role"]).write(msg["content"])
+    st.chat_message(msg["role"]).write(msg["content"])
 
 user_query = st.chat_input(placeholder="Ask me anything!")
 

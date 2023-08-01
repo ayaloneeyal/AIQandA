@@ -59,10 +59,6 @@ class StreamHandler(BaseCallbackHandler):
         self.text += token
         self.container.markdown(self.text)
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
-if not openai_api_key:
-    st.info("Please add your OpenAI API key to continue.")
-    st.stop()
 
 class PrintRetrievalHandler(BaseCallbackHandler):
     def __init__(self, container):
@@ -73,6 +69,9 @@ class PrintRetrievalHandler(BaseCallbackHandler):
 
     def on_retriever_end(self, documents, **kwargs):
         self.container.write(documents)
+
+
+openai_api_key = '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'
 
 
 retriever = configure_retriever()

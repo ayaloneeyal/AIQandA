@@ -149,4 +149,4 @@ if user_query:
         #, callbacks=[StreamlitCallbackHandler(st.container()),retrieval_handler]    )
         
         st.session_state.messages.append({"role": "assistant", "content": response})
-        #st.container().write(response)
+        st.chat_message("assistant",avatar='https://raw.githubusercontent.com/dataprofessor/streamlit-chat-avatar/master/bot-icon.png').write(response])

@@ -124,11 +124,8 @@ if "messages" not in st.session_state:
     ]
 
 for msg in st.session_state.messages:
-    im = Image.open("./favicon.ico") 
-
     if msg["role"] == "assistant" :
         st.chat_message(msg["role"],avatar='https://raw.githubusercontent.com/dataprofessor/streamlit-chat-avatar/master/bot-icon.png').write(msg["content"])
-                                           
     else:
         st.chat_message(msg["role"]).write(msg["content"])
 

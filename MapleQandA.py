@@ -143,8 +143,8 @@ if user_query:
         retrieval_handler = PrintRetrievalHandler(st.container())
         stream_handler = StreamHandler(st.empty())
         response = agent.run(
-            user_query, callbacks=[StreamlitCallbackHandler(st.container()),retrieval_handler]
-        )
+            user_query)
+        #, callbacks=[StreamlitCallbackHandler(st.container()),retrieval_handler]    )
         
         st.session_state.messages.append({"role": "assistant", "content": response})
-        st.container().write(response)
+        #st.container().write(response)

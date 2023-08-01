@@ -95,9 +95,7 @@ tools = [
     ]
 
 PREFIX = """Answer the following questions as best you can, but speaking as passionate Certified Financial Planner. Always use the Knowledge Base tool before doing a general search. You have access to the following tools:"""
-memory = ConversationBufferMemory(
-    memory_key="chat_history", k=5, return_messages=True
-)
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 llm = ChatOpenAI(
     model_name="gpt-3.5-turbo",
     openai_api_key=openai_api_key,

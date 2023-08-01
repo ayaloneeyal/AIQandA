@@ -141,7 +141,7 @@ if user_query:
     from langchain.callbacks import StreamlitCallbackHandler
 
 
-    with st.chat_message("assistant",avatar=im):
+    with st.chat_message("assistant",avatar='https://raw.githubusercontent.com/dataprofessor/streamlit-chat-avatar/master/bot-icon.png'):
         retrieval_handler = PrintRetrievalHandler(st.container())
         stream_handler = StreamHandler(st.empty())
         response = agent.run(
@@ -149,4 +149,4 @@ if user_query:
         #, callbacks=[StreamlitCallbackHandler(st.container()),retrieval_handler]    )
         
         st.session_state.messages.append({"role": "assistant", "content": response})
-        st.chat_message("assistant",avatar='https://raw.githubusercontent.com/dataprofessor/streamlit-chat-avatar/master/bot-icon.png').write(response)
+        st.write(response)

@@ -37,7 +37,7 @@ def configure_retriever():
     text_chunks = text_splitter.split_text(text)
 
     # Create embeddings and store in vectordb
-    embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+    embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
     vectordb = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
 
     # Define retriever

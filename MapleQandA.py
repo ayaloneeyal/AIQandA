@@ -77,7 +77,7 @@ class PrintRetrievalHandler(BaseCallbackHandler):
 
 retriever = configure_retriever()
 qa = RetrievalQA.from_chain_type(
-    llm=OpenAI(),
+    llm=OpenAI(openai_api_key=openai_api_key),
     chain_type="stuff",
     retriever=retriever,
     return_source_documents=False,

@@ -71,7 +71,7 @@ class PrintRetrievalHandler(BaseCallbackHandler):
         self.container.write(documents)
 
 
-openai_api_key = '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'
+openai_api_key='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'
 
 
 retriever = configure_retriever()

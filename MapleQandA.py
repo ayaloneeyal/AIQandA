@@ -128,7 +128,7 @@ if "messages" not in st.session_state:
 
 for msg in st.session_state.messages:
     if msg["role"] == "assistant" :
-        st.chat_message(msg["role"],avatar='https://github.com/ayaloneeyal/AIQandA/blob/0d593c6eb7e6d5757da35ae385c02b1f83fe75e9/bot.png').write(msg["content"])
+        st.chat_message(msg["role"],avatar='https://raw.githubusercontent.com/ayaloneeyal/AIQandA/main/favicon.ico').write(msg["content"])
     else:
         st.chat_message(msg["role"]).write(msg["content"])
 
@@ -141,7 +141,7 @@ if user_query:
     from langchain.callbacks import StreamlitCallbackHandler
 
 
-    with st.chat_message("assistant",avatar='https://github.com/ayaloneeyal/AIQandA/blob/0d593c6eb7e6d5757da35ae385c02b1f83fe75e9/bot.png'):
+    with st.chat_message("assistant",avatar='https://raw.githubusercontent.com/ayaloneeyal/AIQandA/main/favicon.ico'):
         retrieval_handler = PrintRetrievalHandler(st.container())
         stream_handler = StreamHandler(st.empty())
         response = agent.run(

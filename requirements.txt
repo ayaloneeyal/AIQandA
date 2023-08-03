@@ -6,4 +6,6 @@ faiss-cpu
 altair
 tiktoken
 cufflinks
-
+pandas
+numpy
+yfinance

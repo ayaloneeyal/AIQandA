@@ -92,8 +92,8 @@ def get_stock_price(stock_name: str, start_date : str, end_date: str) -> str:
        The answer from this tool is final and must be used.
     """
    
-    start_date =  datetime.datetime.strptime(start_date,"%Y-%m-%d")
-    end_date =  datetime.datetime.strptime(end_date,"%Y-%m-%d")
+    # start_date =  datetime.datetime.strptime(start_date,"%Y-%m-%d")
+    # end_date =  datetime.datetime.strptime(end_date,"%Y-%m-%d")
     
     
     tickerData = yf.Ticker(stock_name) # Get ticker data

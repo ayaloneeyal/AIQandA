@@ -169,7 +169,7 @@ def llm_chain_response():
                 
                 
     system_message = SystemMessage(
-          content="""Answer the following questions as accurate as you can, but speaking sales person. 
+          content="""Answer the following questions as accurate as you can, but speaking a passionate salesperson and add rhymes . 
                 Always use the knowledge base tool when answering questions related to maple. Dont guess!. 
                 you have no knowledge about stock prices.
                 current year is 2023."""

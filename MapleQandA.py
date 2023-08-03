@@ -98,11 +98,8 @@ def get_stock_price(stock_name: str, start_date : str, end_date: str) -> str:
     tickerData = yf.Ticker(stock_name) # Get ticker data
     tickerDf = tickerData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
 
-    print(tickerDf)
     delta = len(tickerDf)
-    print(delta)
     delta = int(delta/2)
-    
     if delta > 20 :
         delta = 20
 
@@ -112,9 +109,10 @@ def get_stock_price(stock_name: str, start_date : str, end_date: str) -> str:
     qf.add_bollinger_bands(periods=delta,boll_std=2,colors=['magenta','grey'],fill=True)
     qf.add_volume(name='Volume',up_color='green', down_color='red')
     fig = qf.iplot(asFigure=True)
+   
     st.plotly_chart(fig)
-
     close_price = tickerDf['Close'].iat[-1]
+
     return f"{stock_name} closing price was on the last date was {close_price}"
 
 @st.cache_data

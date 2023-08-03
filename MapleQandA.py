@@ -215,7 +215,7 @@ if "messages" not in st.session_state:
 
 for msg in st.session_state.messages:
     if msg["role"] == "assistant" :
-        st.chat_message(msg["role"],avatar=im).write(msg["content"])
+        st.chat_message(msg["role"],avatar='https://raw.githubusercontent.com/ayaloneeyal/AIQandA/main/favicon.ico').write(msg["content"])
     else:
         st.chat_message(msg["role"]).write(msg["content"])
 
@@ -227,7 +227,7 @@ if user_query:
 
     agent =  llm_chain_response()
 
-    with st.chat_message("assistant",avatar=im):
+    with st.chat_message("assistant",avatar='https://raw.githubusercontent.com/ayaloneeyal/AIQandA/main/favicon.ico'):
         # retrieval_handler = PrintRetrievalHandler(st.container())
         # stream_handler = StreamHandler(st.empty()   )
         # , callbacks=[retrieval_handler,stream_handler]

@@ -5,3 +5,5 @@ openai
 faiss-cpu
 altair
 tiktoken
+cufflinks
+

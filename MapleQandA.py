@@ -30,7 +30,7 @@ import datetime
 
 
 
-im = Image.open("/home/ayalone/Downloads/favicon/favicon_io/favicon.ico") 
+im = Image.open("./favicon.ico") 
 st.set_page_config(page_title="Maple AI assistent", page_icon=im)
 st.title(":maple_leaf: Maple AI assistent")
 

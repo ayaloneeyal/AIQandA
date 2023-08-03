@@ -80,7 +80,7 @@ class PrintRetrievalHandler(BaseCallbackHandler):
         self.container.write(documents)
 
 
-@st.cache_data
+
 def get_stock_price(stock_name: str, start_date : str, end_date: str) -> str:
     """Searches the stock price for a given time period
        query must provide stock_name start_date and end_date.
@@ -92,22 +92,29 @@ def get_stock_price(stock_name: str, start_date : str, end_date: str) -> str:
        The answer from this tool is final and must be used.
     """
    
-    # start_date =  datetime.datetime.strptime(start_date,"%Y-%m-%d")
-    # end_date =  datetime.datetime.strptime(end_date,"%Y-%m-%d")
-    
+    start_date =  datetime.datetime.strptime(start_date,"%Y-%m-%d")
+    end_date =  datetime.datetime.strptime(end_date,"%Y-%m-%d")
     
     tickerData = yf.Ticker(stock_name) # Get ticker data
     tickerDf = tickerData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
 
+    print(tickerDf)
+    delta = len(tickerDf)
+    print(delta)
+    delta = int(delta/2)
+    
+    if delta > 20 :
+        delta = 20
+
     # Bollinger bands
     st.header('**Bollinger Bands**')
-    qf=cf.QuantFig(tickerDf,title='First Quant Figure',legend='top',name='GS')
-    qf.add_bollinger_bands()
+    qf=cf.QuantFig(tickerDf,kind='candlestick', title=f"{stock_name} price",legend='top',name=f"{stock_name}")
+    qf.add_bollinger_bands(periods=delta,boll_std=2,colors=['magenta','grey'],fill=True)
+    qf.add_volume(name='Volume',up_color='green', down_color='red')
     fig = qf.iplot(asFigure=True)
     st.plotly_chart(fig)
 
     close_price = tickerDf['Close'].iat[-1]
-
     return f"{stock_name} closing price was on the last date was {close_price}"
 
 @st.cache_data
